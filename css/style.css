@@ -1,0 +1,59 @@
+/* code for centering for now */
+html,
+body {
+  height: 100%;
+}
+
+html {
+  display: table;
+  margin: auto;
+}
+
+body {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/*  */
+
+h1 {
+  text-align: center;
+}
+
+#game-board {
+  height: 350px;
+  width: 800px;
+  background-color: burlywood;
+  display: grid;
+  grid-template-columns: 60px 60px 60px 60px 60px 60px 60px 60px;
+  grid-template-rows: 30px 30px;
+  grid-auto-flow: column;
+}
+
+.pit-a {
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+.pit-n {
+  grid-column: 8;
+  grid-row: 1 / 3;
+}
+
+/* .pit {
+    height: 100px;
+    width: 100px;
+    background-color: rgb(110, 102, 91);
+    margin: 10px;
+   
+} */
+
+#message-display {
+  height: 100px;
+  width: 400px;
+  background-color: rgb(158, 99, 158);
+}
+
+#message-display {
+  font-size: xx-large;
+  text-align: center;
+}
