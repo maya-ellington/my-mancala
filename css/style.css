@@ -33,7 +33,7 @@ h1 {
   align-items: center;
   justify-items: center;
   padding: 20px;
-  font-size: 35px;
+  font-size: 35spx;
 }
 
 #game-field > * {
@@ -44,7 +44,7 @@ h1 {
   text-align: center;
 }
 
-.store-1 {
+.mancala-1 {
   height: 250px !important;
   width: 100px !important;
   grid-column: 1;
@@ -54,7 +54,7 @@ h1 {
   text-orientation: mixed;
   transform: rotate(-180deg);
 }
-.store-2 {
+.mancala-2 {
   height: 250px !important;
   width: 100px !important;
   grid-column: 8;
