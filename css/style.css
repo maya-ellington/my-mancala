@@ -23,25 +23,17 @@ h1 {
   padding: 50px;
 }
 
-/* #game-board {
-  height: 350px;
-  width: 800px;
-  background-color: burlywood;
-  display: flex;
-} */
 
 #game-field {
   display: grid;
   grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px;
   grid-template-rows: 150px 150px;
   grid-auto-flow: column;
-
-  /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    background-color: burlywood;
+  background-color: burlywood;
   align-items: center;
   justify-items: center;
+  padding: 20px;
+  font-size: 35px;
 }
 
 #game-field > * {
@@ -59,8 +51,8 @@ h1 {
   grid-row: 1 / 3;
   background-color: rgb(86, 86, 133) !important;
   writing-mode: vertical-lr;
-text-orientation: mixed;
-transform: rotate(-180deg);
+  text-orientation: mixed;
+  transform: rotate(-180deg);
 }
 .store-2 {
   height: 250px !important;
@@ -69,7 +61,7 @@ transform: rotate(-180deg);
   grid-row: 1 / 3;
   background-color: rgb(86, 86, 133) !important;
   writing-mode: vertical-rl;
-text-orientation: mixed;
+  text-orientation: mixed;
 }
 
 /* .pit {
