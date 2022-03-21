@@ -23,7 +23,6 @@ h1 {
   padding: 50px;
 }
 
-
 #game-field {
   display: grid;
   grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px;
@@ -33,7 +32,8 @@ h1 {
   align-items: center;
   justify-items: center;
   padding: 20px;
-  font-size: 35spx;
+  font-size: 35px;
+  border-radius: 32px;
 }
 
 #game-field > * {
@@ -53,6 +53,7 @@ h1 {
   writing-mode: vertical-lr;
   text-orientation: mixed;
   transform: rotate(-180deg);
+  border-radius: 32px !important;
 }
 .mancala-2 {
   height: 250px !important;
@@ -62,6 +63,7 @@ h1 {
   background-color: rgb(86, 86, 133) !important;
   writing-mode: vertical-rl;
   text-orientation: mixed;
+  border-radius: 32px !important;
 }
 
 /* .pit {
@@ -81,8 +83,19 @@ h1 {
   align-items: center;
   font-size: xx-large;
   margin: 20px;
+  border-radius: 10px;
 }
 
 /* #message-display {
   text-align: center;
+  border-radius: 32px
+} */
+
+/* media query for mobile  */
+/* @media (max-width: 480px) {
+  html {
+    transform: rotate(90deg);
+    margin-top: 30%;
+  }
+
 } */
