@@ -11,17 +11,8 @@ const player2Msg = "Player 2's Turn!";
 
 let player1;
 let player2;
-let gameArray = [0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0];
-//key value pairs
-//run loop w if statement to find corresponding array element i--
-//if statement, if i=0, set i = gameArray.length + 1
-//find index for where you are 
-//cat/dog/car array method example
-//i = foundArrayIndex
-//when i = original index + 1 , loop stops
-//decrimenting i--
-//marbleAmount (value of index, 4), decrement marble count 
-//if marbleAmount = 0, break
+let gameArray = [0, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4];
+
 
 //-----------------------------------------------------
 
@@ -60,21 +51,21 @@ document.querySelector("#game-field").addEventListener('click', gameRound);
 
 //set up values in init function
 function init() {
-    document.querySelector(".mancala-total-1").innerHTML = gameArray[0];
-    document.querySelector(".pit-a").innerHTML = gameArray[1];
-    document.querySelector(".pit-b").innerHTML = gameArray[2];
-    document.querySelector(".pit-c").innerHTML = gameArray[3];
-    document.querySelector(".pit-d").innerHTML = gameArray[4];
-    document.querySelector(".pit-e").innerHTML = gameArray[5];
-    document.querySelector(".pit-f").innerHTML = gameArray[6];
-    document.querySelector(".pit-g").innerHTML = gameArray[7];
-    document.querySelector(".pit-h").innerHTML = gameArray[8];
-    document.querySelector(".pit-i").innerHTML = gameArray[9];
-    document.querySelector(".pit-j").innerHTML = gameArray[10];
-    document.querySelector(".pit-k").innerHTML = gameArray[11];
-    document.querySelector(".pit-l").innerHTML = gameArray[12];
-    document.querySelector(".mancala-total-2").innerHTML = gameArray[13];
-}
+    document.getElementById("0").innerHTML = gameArray[0];
+    document.getElementById("1").innerHTML = gameArray[1];
+    document.getElementById("2").innerHTML = gameArray[2];
+    document.getElementById("3").innerHTML = gameArray[3];
+    document.getElementById("4").innerHTML = gameArray[4];
+    document.getElementById("5").innerHTML = gameArray[5];
+    document.getElementById("6").innerHTML = gameArray[6];
+    document.getElementById("7").innerHTML = gameArray[7];
+    document.getElementById("8").innerHTML = gameArray[8];
+    document.getElementById("9").innerHTML = gameArray[9];
+    document.getElementById("10").innerHTML = gameArray[10];
+    document.getElementById("11").innerHTML = gameArray[11];
+    document.getElementById("12").innerHTML = gameArray[12];
+    document.getElementById("13").innerHTML = gameArray[13];
+}document.get
 
 
 //when player clicks pit, all seeds in that pit get distributed around each consequtive pit
@@ -84,25 +75,35 @@ function startGame() {
 
 }
 
-// function handleClick() {
-// pits1[1] + 1
-// }
-
-//WORK THIS OUT?
-// function gameRound(){
-//     console.log(pit)
-// }
-//RETURNING UNDEFINED
 
 //TO DO
 //1. function so that when you click pit, value of pit changes to 0 and total number of seeds is
 //distributed across all consecutive pits
 
 //?
+
+//key value pairs
+//run loop w if statement to find corresponding array element i--
+//if statement, if i=0, set i = gameArray.length + 1
+//find index for where you are 
+//cat/dog/car array method example
+//i = foundArrayIndex
+//when i = original index + 1 , loop stops
+//decrimenting i--
+//marbleAmount (value of index, 4), decrement marble count 
+//if marbleAmount = 0, break
+
+
 function gameRound(e) {
-    console.log(e.target.innerHTML)
-    
-    // e.target.innerText = '0'
+    //console.log(e.target.getAttribute('id'))
+    let foundArrayIndex = e.target.getAttribute('id')
+
+    // for (i=0; i < gameArray.length + 1; i-- ) {
+
+    // } FIGURE OUT FOR LOOP LOGIC!
+
+    gameArray[foundArrayIndex] = 0; //empties that pit
+    init();
   };
 
 
