@@ -14,6 +14,7 @@ let player2;
 let gameArray = [0, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4];
 
 
+
 //-----------------------------------------------------
 
 /*----- cached element references -----*/
@@ -32,11 +33,11 @@ let msgBtn = document.querySelector("#message-display");
 /*----- event listeners -----*/
 
 //changes initial message to indicate whose turn it is
-msgBtn.addEventListener("click", startGame);
+msgBtn.addEventListener("click", render);
 msgBtn.innerHTML = startMsg;
 
 document.querySelector("#game-field").addEventListener('click', gameRound);
-//NEED TO ISOLATE SO THAT ONLY PIT VALUES ARE CLICKABLE (WITHIN CIRCLE)
+//NEED TO ISOLATE SO THAT ONLY PIT VALUES ARE CLICKABLE (WITHIN CIRCLE) & not store
 
 
 // pit.forEach(function (e) {
@@ -50,7 +51,7 @@ document.querySelector("#game-field").addEventListener('click', gameRound);
 //render()  //in init function?
 
 //set up values in init function
-function init() {
+function setBoard() {
     document.getElementById("0").innerHTML = gameArray[0];
     document.getElementById("1").innerHTML = gameArray[1];
     document.getElementById("2").innerHTML = gameArray[2];
@@ -65,13 +66,13 @@ function init() {
     document.getElementById("11").innerHTML = gameArray[11];
     document.getElementById("12").innerHTML = gameArray[12];
     document.getElementById("13").innerHTML = gameArray[13];
-}document.get
+}
 
 
 //when player clicks pit, all seeds in that pit get distributed around each consequtive pit
-function startGame() {
+function render() {
   msgBtn.innerHTML = player1Msg;
-  init();
+  setBoard();
 
 }
 
@@ -93,19 +94,96 @@ function startGame() {
 //marbleAmount (value of index, 4), decrement marble count 
 //if marbleAmount = 0, break
 
+function gameRound(e){
+    
+    let userArrayIndex = e.target.getAttribute('id');
+    let arrayValue = e.target.innerText;
+    // console.log(userArrayIndex)
+    // console.log(arrayValue)
+    function increaseMancalaArrayCount(arr, indexCount){ //passing in index of circle
 
-function gameRound(e) {
-    //console.log(e.target.getAttribute('id'))
-    let foundArrayIndex = e.target.getAttribute('id')
+        const arrayPositionsToFill = arr[indexCount] //value in game array aka seeds 
+        arr[indexCount] = 0 //when selected should go to 0
+      
+        return addToleft(arr, indexCount -1, arrayPositionsToFill)
+                                              //number of seed count
+      }
+      
+      
+      function addToleft(arr, startingPoint, positionsTofill){
+      
+        if(positionsTofill === 0){
+          return arr
+        }
+      
+        if(startingPoint < 0){
+          startingPoint = arr.length -1 //starts at end of array if you reached beginning
+        }
+      
+        arr[startingPoint] += 1
+      
+        return addToleft(arr, startingPoint - 1, positionsTofill -1)
+        
+      }
+      
+      
+      console.log(increaseMancalaArrayCount(gameArray, userArrayIndex))
+      setBoard();
+      
+}
 
-    // for (i=0; i < gameArray.length + 1; i-- ) {
-
-    // } FIGURE OUT FOR LOOP LOGIC!
-
-    gameArray[foundArrayIndex] = 0; //empties that pit
-    init();
-  };
 
 
 //2. function so that when pit values on player 1 OR player 2 side are all 0, game over
-//triggers message of which player wins based on whose store has the most seed values
+  //when gameArray[1-6] = 0, or gameArray[7-12] = 0, game over
+  //winner = 
+//triggers message of which player wins based on whose store has the most seed value
+
+
+const indexCount = 2
+
+const array = [3, 2, 4, 1, 7, 8]
+
+// const arrayPositionsToFill =array[indexCount]
+// array[indexCount] = 0
+
+
+
+
+// function increaseMancalaArrayCount(arr, indexCount){ //passing in index of circle
+
+//   const arrayPositionsToFill = arr[indexCount] //value in game array aka seeds 
+//   arr[indexCount] = 0 //when selected should go to 0
+
+//   return addToleft(arr, indexCount -1, arrayPositionsToFill)
+//                                         //number of seed count
+// }
+
+
+// function addToleft(arr, startingPoint, positionsTofill){
+
+//   if(positionsTofill === 0){
+//     return arr
+//   }
+
+//   if(startingPoint < 0){
+//     startingPoint = arr.length -1 //starts at end of array if you reached beginning
+//   }
+
+//   arr[startingPoint] += 1
+
+//   return addToleft(arr, startingPoint - 1, positionsTofill -1)
+  
+// }
+
+
+// console.log(increaseMancalaArrayCount(array, 2))
+
+
+
+
+
+
+
+
+

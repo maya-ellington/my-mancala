@@ -91,11 +91,11 @@ h1 {
   border-radius: 32px
 } */
 
-/* media query for mobile  */
-/* @media (max-width: 480px) {
+/*media query for mobile  */
+@media (max-width: 480px) {
   html {
     transform: rotate(90deg);
     margin-top: 30%;
   }
 
-} */
+}
