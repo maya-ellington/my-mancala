@@ -46,7 +46,7 @@ h1 {
   text-align: center;
 }
 
-.mancala-1 {
+.mancala-2 {
   height: 250px !important;
   width: 100px !important;
   grid-column: 1;
@@ -58,7 +58,7 @@ h1 {
   transform: rotate(-180deg);
   border-radius: 32px !important;
 }
-.mancala-2 {
+.mancala-1 {
   height: 250px !important;
   width: 100px !important;
   grid-column: 8;

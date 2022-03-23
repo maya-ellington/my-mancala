@@ -11,6 +11,7 @@ const gameOver = "GAME OVER!";
 
 let player; //changes state between player 1 and 2
 let gameArray = [0, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4]; //initial game set up
+let winnerTotal;
 
 //quick game over array:
 // let gameArray = [0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4];
@@ -85,7 +86,6 @@ function gameOverMessage() {
     return (player = gameOver), (msgBtn.innerHTML = player);
 }
 
-//CURRENTLY PLAYER 1 MESSAGE AND GAME OVER MESSAGE IS DELAYED BY 1 CLICK, need to trigger immediate change in display message
 function gameRound(e) {
   if (e.target.className === "mancala-2" || e.target.className === "mancala-1")
     return;
@@ -98,8 +98,6 @@ function gameRound(e) {
 
   //cannot select pits if game over
   if (player === gameOver) return;
-
-  playerTogglePrintMessage();
 
   if (player === player1Msg) {
     //isolates buttons for player 1 turn
@@ -134,6 +132,68 @@ function gameRound(e) {
     const arrayPositionsToFill = arr[indexCount]; //value in game array aka seeds
     arr[indexCount] = 0; //when selected should go to 0
 
+    //1 & 13,, 12 & 2,, 11 & 3,,  10 & 4,, 9 & 5 ,, 8 & 6 pairs of pits on opposite sides (array position)
+    // if(arr[1] === 1){
+    //   let marbles = arr[13]
+    //   arr[13] = 0;
+    //   arr[0] += marbles
+    // }
+    // if(arr[13] === 1){
+    //   let marbles = arr[1]
+    //   arr[1] = 0;
+    //   arr[7] += marbles
+    // }
+    // if(arr[2] === 1){
+    //   let marbles = arr[12]
+    //   arr[12] = 0;
+    //   arr[0] += marbles
+    // }
+    // if(arr[12] === 1){
+    //   let marbles = arr[2]
+    //   arr[2] = 0;
+    //   arr[7] += marbles
+    // }
+    // if(arr[3] === 1){
+    //   let marbles = arr[11]
+    //   arr[11] = 0;
+    //   arr[0] += marbles
+    // }
+    // if(arr[11] === 1){
+    //   let marbles = arr[3]
+    //   arr[13] = 0;
+    //   arr[7] += marbles
+    // }
+    // if(arr[4] === 1){
+    //   let marbles = arr[10]
+    //   arr[10] = 0;
+    //   arr[0] += marbles
+    // }
+    // if(arr[10] === 1){
+    //   let marbles = arr[4]
+    //   arr[4] = 0;
+    //   arr[7] += marbles
+    // }
+    // if(arr[5] === 1){
+    //   let marbles = arr[9]
+    //   arr[9] = 0;
+    //   arr[0] += marbles
+    // }
+    // if(arr[9] === 1){
+    //   let marbles = arr[5]
+    //   arr[5] = 0;
+    //   arr[7] += marbles
+    // }
+    // if(arr[6] === 1){
+    //   let marbles = arr[8]
+    //   arr[8] = 0;
+    //   arr[0] += marbles
+    // }
+    // if(arr[8] === 1){
+    //   let marbles = arr[6]
+    //   arr[6] = 0;
+    //   arr[7] += marbles
+    // }
+
     return addToleft(arr, indexCount - 1, arrayPositionsToFill);
     //number of seed count
   }
@@ -142,7 +202,6 @@ function gameRound(e) {
     if (positionsTofill === 0) {
       return arr;
     }
-    //1 & 13,, 12 & 2,, 11 & 3,,  10 & 4,, 9 & 5 ,, 8 & 6 pairs of pits on opposite sides (array position)
 
     if (startingPoint < 0) {
       startingPoint = arr.length - 1; //starts at end of array if you reached beginning
@@ -153,9 +212,12 @@ function gameRound(e) {
     return addToleft(arr, startingPoint - 1, positionsTofill - 1);
   }
   increaseMancalaArrayCount(gameArray, userArrayIndex);
+  
+  playerTogglePrintMessage();
+
   setBoard();
+
   gameOverMessage();
-  // playerTogglePrintMessage();
 }
 
 //2. function so that when pit values on player 1 OR player 2 side are all 0, game over
