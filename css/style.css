@@ -16,12 +16,15 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
-/*  */
-
 h1 {
   text-align: center;
   padding: 15px;
+}
+
+#ac-wrapper {
+  border: 4mm ridge rgba(220, 189, 50, 0.6);
+  padding: 10px;
+  background-color: rgb(231, 233, 200);
 }
 
 #game-field {
@@ -96,9 +99,9 @@ h1 {
 } */
 
 /*media query for mobile  */
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   html {
     transform: rotate(90deg);
     margin-top: 30%;
   }
-}
+} */

@@ -30,6 +30,16 @@ document.querySelector("#game-field").addEventListener("click", gameRound);
 
 /*----- functions -----*/
 
+function PopUp(hideOrshow) {
+  if (hideOrshow == 'hide') document.getElementById('ac-wrapper').style.display = "none";
+  else document.getElementById('ac-wrapper').removeAttribute('style');
+}
+window.onload = function () {
+  setTimeout(function () {
+      PopUp('show');
+  }, 0);
+}
+
 //??POTENTIALLY SHORTEN THIS WITH A LOOP document.getElementById("i").innerHTML = gameArray[i];
 function setBoard() {
   document.getElementById("0").innerHTML = gameArray[0];
@@ -47,20 +57,23 @@ function setBoard() {
   document.getElementById("12").innerHTML = gameArray[12];
   document.getElementById("13").innerHTML = gameArray[13];
 }
+function buttonMsg() {
+  msgBtn.innerHTML = player;
+}
 
 function render() {
-  msgBtn.innerHTML = player1Msg;
   setBoard();
   player = player1Msg;
+  buttonMsg();
 }
 
 function playerTogglePrintMessage() {
   msgBtn.innerHTML = player;
   if (player === player1Msg) {
-    return (player = player2Msg), (msgBtn.innerHTML = player);
+    return (player = player2Msg), buttonMsg();
   }
   if (player === player2Msg) {
-    return (player = player1Msg), (msgBtn.innerHTML = player);
+    return (player = player1Msg), buttonMsg();
   }
 }
 
@@ -73,7 +86,7 @@ function gameOverMessage() {
     gameArray[5] == 0 &&
     gameArray[6] == 0
   )
-    return (player = gameOver), (msgBtn.innerHTML = player);
+    return (player = gameOver), buttonMsg();
 
   if (
     gameArray[8] == 0 &&
@@ -83,7 +96,7 @@ function gameOverMessage() {
     gameArray[12] == 0 &&
     gameArray[13] == 0
   )
-    return (player = gameOver), (msgBtn.innerHTML = player);
+    return (player = gameOver), buttonMsg();;
 }
 
 function gameRound(e) {
@@ -212,7 +225,7 @@ function gameRound(e) {
     return addToleft(arr, startingPoint - 1, positionsTofill - 1);
   }
   increaseMancalaArrayCount(gameArray, userArrayIndex);
-  
+
   playerTogglePrintMessage();
 
   setBoard();
