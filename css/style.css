@@ -2,6 +2,7 @@
 html,
 body {
   height: 100%;
+  background-color: rgb(219, 240, 219);
 }
 
 html {
@@ -20,7 +21,7 @@ body {
 
 h1 {
   text-align: center;
-  padding: 50px;
+  padding: 15px;
 }
 
 #game-field {
@@ -29,6 +30,7 @@ h1 {
   grid-template-rows: 150px 150px;
   grid-auto-flow: column;
   background-color: burlywood;
+  box-shadow: 5px 10px #888888;
   align-items: center;
   justify-items: center;
   padding: 20px;
@@ -50,6 +52,7 @@ h1 {
   grid-column: 1;
   grid-row: 1 / 3;
   background-color: rgb(86, 86, 133) !important;
+  box-shadow: 0 0 10px rgba(0,0,0,.05), 2px 2px 5px rgba(0,0,0,.1);
   writing-mode: vertical-lr;
   text-orientation: mixed;
   transform: rotate(-180deg);
@@ -61,6 +64,7 @@ h1 {
   grid-column: 8;
   grid-row: 1 / 3;
   background-color: rgb(86, 86, 133) !important;
+  box-shadow: 0 0 10px rgba(0,0,0,.05), 2px 2px 5px rgba(0,0,0,.1);
   writing-mode: vertical-rl;
   text-orientation: mixed;
   border-radius: 32px !important;

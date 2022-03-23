@@ -6,14 +6,14 @@ const player2Msg = "Player 2's Turn!";
 const player1Wins = "PLAYER 1 WINS!!!";
 const player2Wins = "PLAYER 2 WINS!!!";
 const gameOver = "GAME OVER!";
-//-----------------------------------------------------
 
 /*----- app's state (variables) -----*/
 
 let player; //changes state between player 1 and 2
-let gameArray = [0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4]; //initial game set up
+let gameArray = [0, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4]; //initial game set up
 
-//-----------------------------------------------------
+//quick game over array:
+// let gameArray = [0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4];
 
 /*----- cached element references -----*/
 
@@ -21,21 +21,11 @@ let msgBtn = document.querySelector("#message-display");
 
 msgBtn.innerHTML = startMsg;
 
-//-----------------------------------------------------
-
 /*----- event listeners -----*/
 
-//changes initial message to indicate whose turn it is
 msgBtn.addEventListener("click", render);
 
 document.querySelector("#game-field").addEventListener("click", gameRound);
-document.querySelector("#game-field").addEventListener("click", setBoard);
-
-// pit.forEach(function (e) {
-//   e.addEventListener("click", gameRound);
-// });
-
-//-----------------------------------------------------
 
 /*----- functions -----*/
 
@@ -57,7 +47,6 @@ function setBoard() {
   document.getElementById("13").innerHTML = gameArray[13];
 }
 
-//when player clicks pit, all seeds in that pit get distributed around each consequtive pit
 function render() {
   msgBtn.innerHTML = player1Msg;
   setBoard();
@@ -66,11 +55,49 @@ function render() {
 
 function playerTogglePrintMessage() {
   msgBtn.innerHTML = player;
+  if (player === player1Msg) {
+    return (player = player2Msg), (msgBtn.innerHTML = player);
+  }
+  if (player === player2Msg) {
+    return (player = player1Msg), (msgBtn.innerHTML = player);
+  }
 }
 
+function gameOverMessage() {
+  if (
+    gameArray[1] == 0 &&
+    gameArray[2] == 0 &&
+    gameArray[3] == 0 &&
+    gameArray[4] == 0 &&
+    gameArray[5] == 0 &&
+    gameArray[6] == 0
+  )
+    return (player = gameOver), (msgBtn.innerHTML = player);
+
+  if (
+    gameArray[8] == 0 &&
+    gameArray[9] == 0 &&
+    gameArray[10] == 0 &&
+    gameArray[11] == 0 &&
+    gameArray[12] == 0 &&
+    gameArray[13] == 0
+  )
+    return (player = gameOver), (msgBtn.innerHTML = player);
+}
+
+//CURRENTLY PLAYER 1 MESSAGE AND GAME OVER MESSAGE IS DELAYED BY 1 CLICK, need to trigger immediate change in display message
 function gameRound(e) {
   if (e.target.className === "mancala-2" || e.target.className === "mancala-1")
     return;
+
+  //isolate click within pit circle only
+  if (e.target.className !== "pit") return;
+
+  //cannot click on pits containing 0 marbles
+  if (e.target.innerHTML === "0") return;
+
+  //cannot select pits if game over
+  if (player === gameOver) return;
 
   playerTogglePrintMessage();
 
@@ -115,6 +142,7 @@ function gameRound(e) {
     if (positionsTofill === 0) {
       return arr;
     }
+    //1 & 13,, 12 & 2,, 11 & 3,,  10 & 4,, 9 & 5 ,, 8 & 6 pairs of pits on opposite sides (array position)
 
     if (startingPoint < 0) {
       startingPoint = arr.length - 1; //starts at end of array if you reached beginning
@@ -125,34 +153,9 @@ function gameRound(e) {
     return addToleft(arr, startingPoint - 1, positionsTofill - 1);
   }
   increaseMancalaArrayCount(gameArray, userArrayIndex);
-  
-  //when gameArray[1-6] = 0, or gameArray[7-12] = 0, game over
-  if (
-    gameArray[1] == 0 &&
-    gameArray[2] == 0 &&
-    gameArray[3] == 0 &&
-    gameArray[4] == 0 &&
-    gameArray[5] == 0 &&
-    gameArray[6] == 0
-  )
-    return (player = gameOver);
-
-  if (
-    gameArray[8] == 0 &&
-    gameArray[9] == 0 &&
-    gameArray[10] == 0 &&
-    gameArray[11] == 0 &&
-    gameArray[12] == 0 &&
-    gameArray[13] == 0
-  )
-    return (player = gameOver);
-
-  if (player === player1Msg) {
-    return (player = player2Msg);
-  }
-  if (player === player2Msg) {
-    return (player = player1Msg);
-  }
+  setBoard();
+  gameOverMessage();
+  // playerTogglePrintMessage();
 }
 
 //2. function so that when pit values on player 1 OR player 2 side are all 0, game over
