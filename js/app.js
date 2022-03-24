@@ -23,14 +23,21 @@ let winnerTotal;
 /*----- cached element references -----*/
 
 let msgBtn = document.querySelector("#message-display");
-
 msgBtn.innerHTML = startMsg;
+
+let gamePit = document.querySelector("#game-field");
+
+let restartBtn = document.querySelector("#restart");
 
 /*----- event listeners -----*/
 
 msgBtn.addEventListener("click", render);
 
-document.querySelector("#game-field").addEventListener("click", gameRound);
+gamePit.addEventListener("click", gameRound);
+
+restartBtn.addEventListener("click", restart);
+
+
 
 /*----- functions -----*/
 
@@ -62,14 +69,21 @@ function setBoard() {
   document.getElementById("12").innerHTML = gameArray[12];
   document.getElementById("13").innerHTML = gameArray[13];
 }
+
 function buttonMsg() {
   msgBtn.innerHTML = player;
 }
 
+//call at start
 function render() {
   setBoard();
   player = player1Msg;
   buttonMsg();
+}
+
+function restart() {
+  gameArray = [0, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4];
+  render();
 }
 
 //toggle between player 1/2 and display in message
@@ -254,8 +268,3 @@ function gameRound(e) {
 
   gameOverMessage();
 }
-
-//2. function so that when pit values on player 1 OR player 2 side are all 0, game over
-//
-//winner =
-//triggers message of which player wins based on whose store has the most seed value
