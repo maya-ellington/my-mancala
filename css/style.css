@@ -26,11 +26,11 @@ h2 {
   text-align: center;
 }
 
-#ac-wrapper {
+/* #ac-wrapper {
   border: 4mm ridge rgba(220, 189, 50, 0.6);
   padding: 10px;
   background-color: rgb(231, 233, 200);
-}
+} */
 
 #game-field {
   display: grid;

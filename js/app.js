@@ -7,6 +7,8 @@ const player1Wins = "PLAYER 1 WINS!!!";
 const player2Wins = "PLAYER 2 WINS!!!";
 const gameOver = "GAME OVER!";
 const playersTie = "IT'S A TIE!!!"
+const startSound = new Audio('./media/start.wav');
+const playSound = new Audio('./media/play.wav');
 
 /*----- app's state (variables) -----*/
 
@@ -41,16 +43,16 @@ restartBtn.addEventListener("click", restart);
 
 /*----- functions -----*/
 
-//game instructions
-function PopUp(hideOrshow) {
-  if (hideOrshow == 'hide') document.getElementById('ac-wrapper').style.display = "none";
-  else document.getElementById('ac-wrapper').removeAttribute('style');
-}
-window.onload = function () {
-  setTimeout(function () {
-      PopUp('show');
-  }, 0);
-}
+// //game instructions
+// function PopUp(hideOrshow) {
+//   if (hideOrshow == 'hide') document.getElementById('ac-wrapper').style.display = "none";
+//   else document.getElementById('ac-wrapper').removeAttribute('style');
+// }
+// window.onload = function () {
+//   setTimeout(function () {
+//       PopUp('show');
+//   }, 0);
+// }
 
 //??POTENTIALLY SHORTEN THIS WITH A LOOP document.getElementById("i").innerHTML = gameArray[i];
 function setBoard() {
@@ -76,6 +78,8 @@ function buttonMsg() {
 
 //call at start
 function render() {
+  // if (player === player1Msg || player === player2Msg) return;
+  startSound.play();
   setBoard();
   player = player1Msg;
   buttonMsg();
@@ -130,23 +134,24 @@ function gameOverMessage() {
     return (player = gameOver), declareWinner(), buttonMsg();
 }
 
+
 function gameRound(e) {
 
-  // //disable clicks on board until board is set with marble values
-  // if (e.target.innerHTML === "") return;
+  //disable clicks on board until board is set with marble values
+  if (e.target.innerHTML === "") return;
 
-  // //cannot click within mancala store values
-  // if (e.target.className === "mancala-2" || e.target.className === "mancala-1")
-  //   return;
+  //cannot click within mancala store values
+  if (e.target.className === "mancala-2" || e.target.className === "mancala-1")
+    return;
 
-  // //isolate click within pit circle only
-  // if (e.target.className !== "pit") return;
+  //isolate click within pit circle only
+  if (e.target.classList[0] !== "pit") return;
 
-  // //cannot click on pits containing 0 marbles
-  // if (e.target.innerHTML === "0") return;
+  //cannot click on pits containing 0 marbles
+  if (e.target.innerHTML === "0") return;
 
-  // //cannot select pits if game over ADD LOGIC FOR GAME WINNER!
-  // if (player === gameOver) return;
+  //cannot select pits if game over ADD LOGIC FOR GAME WINNER!
+  if (player === gameOver) return;
 
   if (player === player1Msg) {
     //isolates buttons for player 1 turn
@@ -171,6 +176,7 @@ function gameRound(e) {
     )
       return;
   }
+  playSound.play();
 
   let userArrayIndex = e.target.getAttribute("id");
 
