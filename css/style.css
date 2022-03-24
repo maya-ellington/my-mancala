@@ -73,14 +73,6 @@ h1 {
   border-radius: 32px !important;
 }
 
-/* .pit {
-    height: 100px;
-    width: 100px;
-    background-color: rgb(110, 102, 91);
-    margin: 10px;
-   
-} */
-
 #message-display {
   height: 100px;
   width: 400px;
@@ -91,6 +83,15 @@ h1 {
   font-size: xx-large;
   margin: 20px;
   border-radius: 10px;
+}
+
+#restart {
+  height: 50px;
+  width: 100px;
+  background-color: rgb(103, 135, 221);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* #message-display {

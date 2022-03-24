@@ -9,12 +9,15 @@ const gameOver = "GAME OVER!";
 
 /*----- app's state (variables) -----*/
 
-let player; //changes state between player 1 and 2
+let player; //changes state between player 1/2 and game over
 let gameArray = [0, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4]; //initial game set up
 let winnerTotal;
 
 //quick game over array:
 // let gameArray = [0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4];
+
+//shorter game array:
+//let gameArray = [0, 3, 3, 3, 3, 3, 3, 0, 3, 3, 3, 3, 3, 3];
 
 /*----- cached element references -----*/
 
@@ -30,6 +33,7 @@ document.querySelector("#game-field").addEventListener("click", gameRound);
 
 /*----- functions -----*/
 
+//game instructions
 function PopUp(hideOrshow) {
   if (hideOrshow == 'hide') document.getElementById('ac-wrapper').style.display = "none";
   else document.getElementById('ac-wrapper').removeAttribute('style');
@@ -67,6 +71,7 @@ function render() {
   buttonMsg();
 }
 
+//toggle between player 1/2 and display in message
 function playerTogglePrintMessage() {
   msgBtn.innerHTML = player;
   if (player === player1Msg) {
@@ -77,6 +82,7 @@ function playerTogglePrintMessage() {
   }
 }
 
+//declare game over if either side of the board is empty
 function gameOverMessage() {
   if (
     gameArray[1] == 0 &&
@@ -99,7 +105,21 @@ function gameOverMessage() {
     return (player = gameOver), buttonMsg();;
 }
 
+function declareWinner() {
+  if (gameArray[0] > gameArray[13])
+  console.log('player 1 wins');
+  if (gameArray[0] < gameArray[13])
+  console.log('player 1 wins');
+  if ((gameArray[0] === gameArray[13]))
+  console.log('player 1 & player 2 tied');
+}
+
 function gameRound(e) {
+
+  //disable clicks on board until board is set with marble values
+  if (e.target.innerHTML === "") return;
+
+  //cannot click within mancala store values
   if (e.target.className === "mancala-2" || e.target.className === "mancala-1")
     return;
 
@@ -109,7 +129,7 @@ function gameRound(e) {
   //cannot click on pits containing 0 marbles
   if (e.target.innerHTML === "0") return;
 
-  //cannot select pits if game over
+  //cannot select pits if game over ADD LOGIC FOR GAME WINNER!
   if (player === gameOver) return;
 
   if (player === player1Msg) {
