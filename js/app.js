@@ -6,9 +6,9 @@ const player2Msg = "Player 2's Turn!";
 const player1Wins = "PLAYER 1 WINS!!!";
 const player2Wins = "PLAYER 2 WINS!!!";
 const gameOver = "GAME OVER!";
-const playersTie = "IT'S A TIE!!!"
-const startSound = new Audio('./media/start.wav');
-const playSound = new Audio('./media/play.wav');
+const playersTie = "IT'S A TIE!!!";
+const startSound = new Audio("./media/start.wav");
+const playSound = new Audio("./media/play.wav");
 
 /*----- app's state (variables) -----*/
 
@@ -38,8 +38,6 @@ msgBtn.addEventListener("click", render);
 gamePit.addEventListener("click", gameRound);
 
 restartBtn.addEventListener("click", restart);
-
-
 
 /*----- functions -----*/
 
@@ -104,11 +102,11 @@ function playerTogglePrintMessage() {
 //determine winner
 function declareWinner() {
   if (gameArray[0] > gameArray[13])
-  document.querySelector('#declare-winner').innerHTML = player1Wins;
+    document.querySelector("#declare-winner").innerHTML = player1Wins;
   if (gameArray[0] < gameArray[13])
-  document.querySelector('#declare-winner').innerHTML = player2Wins;
-  if ((gameArray[0] === gameArray[13]))
-  document.querySelector('#declare-winner').innerHTML = playersTie;
+    document.querySelector("#declare-winner").innerHTML = player2Wins;
+  if (gameArray[0] === gameArray[13])
+    document.querySelector("#declare-winner").innerHTML = playersTie;
 }
 
 //declare game over if either side of the board is empty
@@ -134,9 +132,7 @@ function gameOverMessage() {
     return (player = gameOver), declareWinner(), buttonMsg();
 }
 
-
 function gameRound(e) {
-
   //disable clicks on board until board is set with marble values
   if (e.target.innerHTML === "") return;
 
