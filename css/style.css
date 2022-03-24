@@ -15,10 +15,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: 'Bungee', cursive;
 }
 h1 {
   text-align: center;
   padding: 15px;
+}
+
+h2 {
+  text-align: center;
 }
 
 #ac-wrapper {
@@ -44,7 +49,7 @@ h1 {
 #game-field > * {
   height: 80px;
   width: 80px;
-  background-color: rgb(110, 102, 91);
+  background-color: rgb(158, 150, 141);
   border-radius: 50%;
   text-align: center;
 }
@@ -60,6 +65,7 @@ h1 {
   text-orientation: mixed;
   transform: rotate(-180deg);
   border-radius: 32px !important;
+  border: 3px solid rgb(189, 11, 224);
 }
 .mancala-1 {
   height: 250px !important;
@@ -71,6 +77,7 @@ h1 {
   writing-mode: vertical-rl;
   text-orientation: mixed;
   border-radius: 32px !important;
+  border: 3px solid rgb(44, 88, 211);
 }
 
 #message-display {
@@ -94,6 +101,13 @@ h1 {
   align-items: center;
 }
 
+.player1 {
+  border: 3px solid rgb(44, 88, 211);
+}
+
+.player2 {
+  border: 3px solid rgb(189, 11, 224);
+}
 /* #message-display {
   text-align: center;
   border-radius: 32px

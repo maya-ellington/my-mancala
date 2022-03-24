@@ -6,6 +6,7 @@ const player2Msg = "Player 2's Turn!";
 const player1Wins = "PLAYER 1 WINS!!!";
 const player2Wins = "PLAYER 2 WINS!!!";
 const gameOver = "GAME OVER!";
+const playersTie = "IT'S A TIE!!!"
 
 /*----- app's state (variables) -----*/
 
@@ -82,6 +83,16 @@ function playerTogglePrintMessage() {
   }
 }
 
+//determine winner
+function declareWinner() {
+  if (gameArray[0] > gameArray[13])
+  document.querySelector('#declare-winner').innerHTML = player1Wins;
+  if (gameArray[0] < gameArray[13])
+  document.querySelector('#declare-winner').innerHTML = player2Wins;
+  if ((gameArray[0] === gameArray[13]))
+  document.querySelector('#declare-winner').innerHTML = playersTie;
+}
+
 //declare game over if either side of the board is empty
 function gameOverMessage() {
   if (
@@ -92,7 +103,7 @@ function gameOverMessage() {
     gameArray[5] == 0 &&
     gameArray[6] == 0
   )
-    return (player = gameOver), buttonMsg();
+    return (player = gameOver), declareWinner(), buttonMsg();
 
   if (
     gameArray[8] == 0 &&
@@ -102,35 +113,26 @@ function gameOverMessage() {
     gameArray[12] == 0 &&
     gameArray[13] == 0
   )
-    return (player = gameOver), buttonMsg();;
-}
-
-function declareWinner() {
-  if (gameArray[0] > gameArray[13])
-  console.log('player 1 wins');
-  if (gameArray[0] < gameArray[13])
-  console.log('player 1 wins');
-  if ((gameArray[0] === gameArray[13]))
-  console.log('player 1 & player 2 tied');
+    return (player = gameOver), declareWinner(), buttonMsg();
 }
 
 function gameRound(e) {
 
-  //disable clicks on board until board is set with marble values
-  if (e.target.innerHTML === "") return;
+  // //disable clicks on board until board is set with marble values
+  // if (e.target.innerHTML === "") return;
 
-  //cannot click within mancala store values
-  if (e.target.className === "mancala-2" || e.target.className === "mancala-1")
-    return;
+  // //cannot click within mancala store values
+  // if (e.target.className === "mancala-2" || e.target.className === "mancala-1")
+  //   return;
 
-  //isolate click within pit circle only
-  if (e.target.className !== "pit") return;
+  // //isolate click within pit circle only
+  // if (e.target.className !== "pit") return;
 
-  //cannot click on pits containing 0 marbles
-  if (e.target.innerHTML === "0") return;
+  // //cannot click on pits containing 0 marbles
+  // if (e.target.innerHTML === "0") return;
 
-  //cannot select pits if game over ADD LOGIC FOR GAME WINNER!
-  if (player === gameOver) return;
+  // //cannot select pits if game over ADD LOGIC FOR GAME WINNER!
+  // if (player === gameOver) return;
 
   if (player === player1Msg) {
     //isolates buttons for player 1 turn
