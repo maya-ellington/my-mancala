@@ -10,10 +10,10 @@ const playersTie = "IT'S A TIE!!!";
 const startSound = new Audio("./media/start.wav"); //source: freesound.org
 const playSound = new Audio("./media/play.wav"); //source: freesound.org
 const endSound = new Audio("./media/end.wav"); //source: freesound.org
+const collectSound = new Audio("./media/collect.wav"); //source: freesound.org
 const modal = document.getElementById("instrModal");
 const btn = document.getElementById("instrBtn");
 const span = document.getElementsByClassName("close")[0];
-
 
 /*----- app's state (variables) -----*/
 
@@ -38,19 +38,19 @@ gamePit.addEventListener("click", gameRound);
 
 restartBtn.addEventListener("click", restart);
 
-btn.onclick = function() {
+btn.onclick = function () {
   modal.style.display = "block";
-}
+};
 
-span.onclick = function() {
+span.onclick = function () {
   modal.style.display = "none";
-}
+};
 
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-}
+};
 /*----- functions -----*/
 
 //prints array values to the game board
@@ -112,14 +112,23 @@ function playerTogglePrintMessage() {
 //determine winner
 function declareWinner() {
   if (gameArray[0] > gameArray[7])
-    return (document.querySelector("#declare-winner").style.background =
-      "rgb(44, 88, 211)", document.querySelector("#declare-winner").innerHTML = player1Wins);
+    return (
+      (document.querySelector("#declare-winner").style.background =
+        "rgb(44, 88, 211)"),
+      (document.querySelector("#declare-winner").innerHTML = player1Wins)
+    );
   if (gameArray[7] > gameArray[0])
-    return (document.querySelector("#declare-winner").style.background =
-      "rgb(189, 11, 224)", document.querySelector("#declare-winner").innerHTML = player2Wins);
+    return (
+      (document.querySelector("#declare-winner").style.background =
+        "rgb(189, 11, 224)"),
+      (document.querySelector("#declare-winner").innerHTML = player2Wins)
+    );
   if (gameArray[0] === gameArray[7])
-    return (document.querySelector("#declare-winner").style.background =
-      "rgb(127 186 191)", document.querySelector("#declare-winner").innerHTML = playersTie);
+    return (
+      (document.querySelector("#declare-winner").style.background =
+        "rgb(127 186 191)"),
+      (document.querySelector("#declare-winner").innerHTML = playersTie)
+    );
 }
 
 //declare game over if either side of the board is empty
@@ -157,6 +166,88 @@ function gameOverMessage() {
     );
 }
 
+function delaySound() {
+  setTimeout(function () {
+    collectSound.play();
+  }, 500);
+}
+
+//collect marbles that are on the other side of a single marble
+function collectSingleMarble() {
+  if (gameArray[1] === 1) {
+    let marbles = gameArray[13];
+    gameArray[13] = 0;
+    gameArray[0] += marbles;
+    delaySound();
+  }
+  if (gameArray[13] === 1) {
+    let marbles = gameArray[1];
+    gameArray[1] = 0;
+    gameArray[7] += marbles;
+    delaySound();
+  }
+  if (gameArray[2] === 1) {
+    let marbles = gameArray[12];
+    gameArray[12] = 0;
+    gameArray[0] += marbles;
+    delaySound();
+  }
+  if (gameArray[12] === 1) {
+    let marbles = gameArray[2];
+    gameArray[2] = 0;
+    gameArray[7] += marbles;
+    delaySound();
+  }
+  if (gameArray[3] === 1) {
+    let marbles = gameArray[11];
+    gameArray[11] = 0;
+    gameArray[0] += marbles;
+    delaySound();
+  }
+  if (gameArray[11] === 1) {
+    let marbles = gameArray[3];
+    gameArray[13] = 0;
+    gameArray[7] += marbles;
+    delaySound();
+  }
+  if (gameArray[4] === 1) {
+    let marbles = gameArray[10];
+    gameArray[10] = 0;
+    gameArray[0] += marbles;
+    delaySound();
+  }
+  if (gameArray[10] === 1) {
+    let marbles = gameArray[4];
+    gameArray[4] = 0;
+    gameArray[7] += marbles;
+    delaySound();
+  }
+  if (gameArray[5] === 1) {
+    let marbles = gameArray[9];
+    gameArray[9] = 0;
+    gameArray[0] += marbles;
+    delaySound();
+  }
+  if (gameArray[9] === 1) {
+    let marbles = gameArray[5];
+    gameArray[5] = 0;
+    gameArray[7] += marbles;
+    delaySound();
+  }
+  if (gameArray[6] === 1) {
+    let marbles = gameArray[8];
+    gameArray[8] = 0;
+    gameArray[0] += marbles;
+    delaySound();
+  }
+  if (gameArray[8] === 1) {
+    let marbles = gameArray[6];
+    gameArray[6] = 0;
+    gameArray[7] += marbles;
+    delaySound();
+  }
+}
+
 function gameRound(e) {
   //disable clicks on board until board is set with marble values
   if (e.target.innerHTML === "") return;
@@ -174,8 +265,8 @@ function gameRound(e) {
   //cannot select pits if game over ADD LOGIC FOR GAME WINNER!
   if (player === gameOver) return;
 
-  if (player === player1Msg) {
-    //isolates buttons for player 1 turn
+  
+  if (player === player1Msg) { //isolates buttons for player 1 turn
     if (
       e.target.id === "8" ||
       e.target.id === "9" ||
@@ -185,8 +276,8 @@ function gameRound(e) {
       e.target.id === "13"
     )
       return;
-  } else if (player === player2Msg) {
-    //isolates buttons for player 2 turn
+  } else if (player === player2Msg) {    //isolates buttons for player 2 turn
+
     if (
       e.target.id === "1" ||
       e.target.id === "2" ||
@@ -197,81 +288,21 @@ function gameRound(e) {
     )
       return;
   }
+  
   playSound.play();
 
+  //grabs the array index value that is attached to pit IDs
   let userArrayIndex = e.target.getAttribute("id");
 
   function increaseMancalaArrayCount(arr, indexCount) {
     //thanks Jim
     //passing in index of circle
 
-    const arrayPositionsToFill = arr[indexCount]; //value in game array aka seeds
+    const arrayPositionsToFill = arr[indexCount]; //value in game array aka marbles
     arr[indexCount] = 0; //when selected should go to 0
 
-    //1 & 13,, 12 & 2,, 11 & 3,,  10 & 4,, 9 & 5 ,, 8 & 6 pairs of pits on opposite sides (array position)
-    // if(arr[1] === 1){
-    //   let marbles = arr[13]
-    //   arr[13] = 0;
-    //   arr[0] += marbles
-    // }
-    // if(arr[13] === 1){
-    //   let marbles = arr[1]
-    //   arr[1] = 0;
-    //   arr[7] += marbles
-    // }
-    // if(arr[2] === 1){
-    //   let marbles = arr[12]
-    //   arr[12] = 0;
-    //   arr[0] += marbles
-    // }
-    // if(arr[12] === 1){
-    //   let marbles = arr[2]
-    //   arr[2] = 0;
-    //   arr[7] += marbles
-    // }
-    // if(arr[3] === 1){
-    //   let marbles = arr[11]
-    //   arr[11] = 0;
-    //   arr[0] += marbles
-    // }
-    // if(arr[11] === 1){
-    //   let marbles = arr[3]
-    //   arr[13] = 0;
-    //   arr[7] += marbles
-    // }
-    // if(arr[4] === 1){
-    //   let marbles = arr[10]
-    //   arr[10] = 0;
-    //   arr[0] += marbles
-    // }
-    // if(arr[10] === 1){
-    //   let marbles = arr[4]
-    //   arr[4] = 0;
-    //   arr[7] += marbles
-    // }
-    // if(arr[5] === 1){
-    //   let marbles = arr[9]
-    //   arr[9] = 0;
-    //   arr[0] += marbles
-    // }
-    // if(arr[9] === 1){
-    //   let marbles = arr[5]
-    //   arr[5] = 0;
-    //   arr[7] += marbles
-    // }
-    // if(arr[6] === 1){
-    //   let marbles = arr[8]
-    //   arr[8] = 0;
-    //   arr[0] += marbles
-    // }
-    // if(arr[8] === 1){
-    //   let marbles = arr[6]
-    //   arr[6] = 0;
-    //   arr[7] += marbles
-    // }
-
     return addToleft(arr, indexCount - 1, arrayPositionsToFill);
-    //number of seed count
+    //number of marble count
   }
 
   function addToleft(arr, startingPoint, positionsTofill) {
@@ -288,6 +319,8 @@ function gameRound(e) {
     return addToleft(arr, startingPoint - 1, positionsTofill - 1);
   }
   increaseMancalaArrayCount(gameArray, userArrayIndex);
+
+  collectSingleMarble();
 
   playerTogglePrintMessage();
 
