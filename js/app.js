@@ -7,8 +7,10 @@ const player1Wins = "PLAYER 1 WINS!!!";
 const player2Wins = "PLAYER 2 WINS!!!";
 const gameOver = "GAME OVER!";
 const playersTie = "IT'S A TIE!!!";
-const startSound = new Audio("./media/start.wav");
-const playSound = new Audio("./media/play.wav");
+const startSound = new Audio("./media/start.wav"); //source: freesound.org
+const playSound = new Audio("./media/play.wav"); //source: freesound.org
+const endSound = new Audio("./media/end.wav"); //source: freesound.org
+
 
 /*----- app's state (variables) -----*/
 
@@ -152,6 +154,7 @@ function gameOverMessage() {
       buttonMsg(),
       (msgBtn.style.background = "rgb(127, 186, 191)")
     );
+    endSound.play();
 }
 
 function gameRound(e) {
