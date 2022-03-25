@@ -17,7 +17,20 @@ const span = document.getElementsByClassName("close")[0];
 const player1Style = "rgb(44, 88, 211)";
 const player2Style = "rgb(189, 11, 224)";
 const startTieStyle = "rgb(127 186 191)";
-
+const place0 = document.getElementById("0");
+const place1 = document.getElementById("1");
+const place2 = document.getElementById("2");
+const place3 = document.getElementById("3");
+const place4 = document.getElementById("4");
+const place5 = document.getElementById("5");
+const place6 = document.getElementById("6");
+const place7 = document.getElementById("7");
+const place8 = document.getElementById("8");
+const place9 = document.getElementById("9");
+const place10 = document.getElementById("10");
+const place11 = document.getElementById("11");
+const place12 = document.getElementById("12");
+const place13 = document.getElementById("13");
 
 /*----- app's state (variables) -----*/
 
@@ -59,20 +72,20 @@ window.onclick = function (event) {
 
 //prints array values to the game board
 function setBoard() {
-  document.getElementById("0").innerHTML = gameArray[0];
-  document.getElementById("1").innerHTML = gameArray[1];
-  document.getElementById("2").innerHTML = gameArray[2];
-  document.getElementById("3").innerHTML = gameArray[3];
-  document.getElementById("4").innerHTML = gameArray[4];
-  document.getElementById("5").innerHTML = gameArray[5];
-  document.getElementById("6").innerHTML = gameArray[6];
-  document.getElementById("7").innerHTML = gameArray[7];
-  document.getElementById("8").innerHTML = gameArray[8];
-  document.getElementById("9").innerHTML = gameArray[9];
-  document.getElementById("10").innerHTML = gameArray[10];
-  document.getElementById("11").innerHTML = gameArray[11];
-  document.getElementById("12").innerHTML = gameArray[12];
-  document.getElementById("13").innerHTML = gameArray[13];
+  place0.innerHTML = gameArray[0];
+  place1.innerHTML = gameArray[1];
+  place2.innerHTML = gameArray[2];
+  place3.innerHTML = gameArray[3];
+  place4.innerHTML = gameArray[4];
+  place5.innerHTML = gameArray[5];
+  place6.innerHTML = gameArray[6];
+  place7.innerHTML = gameArray[7];
+  place8.innerHTML = gameArray[8];
+  place9.innerHTML = gameArray[9];
+  place10.innerHTML = gameArray[10];
+  place11.innerHTML = gameArray[11];
+  place12.innerHTML = gameArray[12];
+  place13.innerHTML = gameArray[13];
 }
 
 function buttonMsg() {
@@ -179,37 +192,37 @@ function delaySound() {
 //collect marbles that are on the other side of a single marble
 function collectSingleMarble() {
   if (player === player1Msg){
-    if (gameArray[1] === 1) {
+    if (gameArray[1] === 1 && gameArray[13] !== 0) {
       let marbles = gameArray[13];
       gameArray[13] = 0;
       gameArray[0] += marbles;
       delaySound();
     }
-    if (gameArray[2] === 1) {
+    if (gameArray[2] === 1 && gameArray[12] !== 0) {
       let marbles = gameArray[12];
       gameArray[12] = 0;
       gameArray[0] += marbles;
       delaySound();
     }
-    if (gameArray[3] === 1) {
+    if (gameArray[3] === 1 && gameArray[11] !== 0) {
       let marbles = gameArray[11];
       gameArray[11] = 0;
       gameArray[0] += marbles;
       delaySound();
     }
-    if (gameArray[4] === 1) {
+    if (gameArray[4] === 1 && gameArray[10] !== 0) {
       let marbles = gameArray[10];
       gameArray[10] = 0;
       gameArray[0] += marbles;
       delaySound();
     }
-    if (gameArray[5] === 1) {
+    if (gameArray[5] === 1 && gameArray[19] !== 0) {
       let marbles = gameArray[9];
       gameArray[9] = 0;
       gameArray[0] += marbles;
       delaySound();
     }
-    if (gameArray[6] === 1) {
+    if (gameArray[6] === 1 && gameArray[8] !== 0) {
       let marbles = gameArray[8];
       gameArray[8] = 0;
       gameArray[0] += marbles;
@@ -217,41 +230,41 @@ function collectSingleMarble() {
     }
   }
   if (player === player2Msg){
-    if (gameArray[13] === 1) {
+    if (gameArray[13] === 1 && gameArray[1] !== 0) {
       let marbles = gameArray[1];
       gameArray[1] = 0;
       gameArray[7] += marbles;
       delaySound();
     }
     
-    if (gameArray[12] === 1) {
+    if (gameArray[12] === 1 && gameArray[2] !== 0) {
       let marbles = gameArray[2];
       gameArray[2] = 0;
       gameArray[7] += marbles;
       delaySound();
     }
     
-    if (gameArray[11] === 1) {
+    if (gameArray[11] === 1 && gameArray[3] !== 0) {
       let marbles = gameArray[3];
       gameArray[13] = 0;
       gameArray[7] += marbles;
       delaySound();
     }
     
-    if (gameArray[10] === 1) {
+    if (gameArray[10] === 1 && gameArray[4] !== 0) {
       let marbles = gameArray[4];
       gameArray[4] = 0;
       gameArray[7] += marbles;
       delaySound();
     }
     
-    if (gameArray[9] === 1) {
+    if (gameArray[9] === 1 && gameArray[5] !== 0) {
       let marbles = gameArray[5];
       gameArray[5] = 0;
       gameArray[7] += marbles;
       delaySound();
     }
-    if (gameArray[8] === 1) {
+    if (gameArray[8] === 1 && gameArray[6] !== 0) {
       let marbles = gameArray[6];
       gameArray[6] = 0;
       gameArray[7] += marbles;
