@@ -10,7 +10,6 @@ html {
 }
 
 body {
-  /* display: table-cell; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,12 +25,6 @@ h1 {
 h2 {
   text-align: center;
 }
-
-/* #ac-wrapper {
-  border: 4mm ridge rgba(220, 189, 50, 0.6);
-  padding: 10px;
-  background-color: rgb(231, 233, 200);
-} */
 
 #game-field {
   color: rgb(255, 174, 0);
@@ -120,7 +113,6 @@ h2 {
   margin: 19px;
 }
 
-/* The Modal */
 .modal {
   display: none; 
   position: fixed; 
@@ -135,7 +127,6 @@ h2 {
   font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
-/* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
   margin: 15% auto; 
@@ -144,7 +135,6 @@ h2 {
   width: 80%; 
 }
 
-/* The Close Button */
 .close {
   color: rgb(145, 86, 160);
   float: right;
@@ -158,11 +148,3 @@ h2 {
   text-decoration: none;
   cursor: pointer;
 }
-
-/*media query for mobile  */
-/* @media (max-width: 480px) {
-  html {
-    transform: rotate(90deg);
-    margin-top: 30%;
-  }
-} */
