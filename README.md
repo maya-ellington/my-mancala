@@ -28,9 +28,14 @@ It is believed that this game dates back to the year 700 AD and originated in Ea
     Player 1 is BLUE :blue_heart: & Player 2 is PURPLE :purple_heart:. 
 
   
-  ## :thought_balloon: Next Steps: 
+  ## :raised_hands: :muscle: Next Steps: 
   - Add actual marble objects that move around the board, in place of the number values (#4 = 4 individual marbles in a pit)
   - Adjust functionality for when 1 marble lands in an empty pit and collects all marbles from the player's pit across from it, so that this only occurs when it is the last marble deposited at the end of a player's round.
   - Add game rule that when player's last marble is deposited into the Mancala (store), the player gets to go again
   - Make the game mobile-friendly.
-  
+
+
+## :thought_balloon: Initial Brainstorming Wireframe 
+
+  <img width="700" alt="Screen Shot 2022-03-23 at 9 27 40 PM" src="https://user-images.githubusercontent.com/42722554/160062060-768f67e0-d404-426d-9a68-d963bea06947.png">
+
