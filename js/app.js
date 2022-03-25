@@ -14,6 +14,10 @@ const collectSound = new Audio("./media/collect.wav"); //source: freesound.org
 const modal = document.getElementById("instrModal");
 const btn = document.getElementById("instrBtn");
 const span = document.getElementsByClassName("close")[0];
+const player1Style = "rgb(44, 88, 211)";
+const player2Style = "rgb(189, 11, 224)";
+const startTieStyle = "rgb(127 186 191)";
+
 
 /*----- app's state (variables) -----*/
 
@@ -81,7 +85,7 @@ function render() {
   setBoard();
   player = player1Msg;
   buttonMsg();
-  msgBtn.style.background = "rgb(44, 88, 211)";
+  msgBtn.style.background = player1Style;
 }
 
 function restart() {
@@ -97,14 +101,14 @@ function playerTogglePrintMessage() {
     return (
       (player = player2Msg),
       buttonMsg(),
-      (msgBtn.style.background = "rgb(189, 11, 224)")
+      (msgBtn.style.background = player2Style)
     );
   }
   if (player === player2Msg) {
     return (
       (player = player1Msg),
       buttonMsg(),
-      (msgBtn.style.background = "rgb(44, 88, 211)")
+      (msgBtn.style.background = player1Style)
     );
   }
 }
@@ -114,19 +118,19 @@ function declareWinner() {
   if (gameArray[0] > gameArray[7])
     return (
       (document.querySelector("#declare-winner").style.background =
-        "rgb(44, 88, 211)"),
+      player1Style),
       (document.querySelector("#declare-winner").innerHTML = player1Wins)
     );
   if (gameArray[7] > gameArray[0])
     return (
       (document.querySelector("#declare-winner").style.background =
-        "rgb(189, 11, 224)"),
+      player2Style),
       (document.querySelector("#declare-winner").innerHTML = player2Wins)
     );
   if (gameArray[0] === gameArray[7])
     return (
       (document.querySelector("#declare-winner").style.background =
-        "rgb(127 186 191)"),
+      startTieStyle),
       (document.querySelector("#declare-winner").innerHTML = playersTie)
     );
 }
@@ -145,7 +149,7 @@ function gameOverMessage() {
       (player = gameOver),
       declareWinner(),
       buttonMsg(),
-      (msgBtn.style.background = "rgb(127, 186, 191)"),
+      (msgBtn.style.background = startTieStyle),
       endSound.play()
     );
 
@@ -161,7 +165,7 @@ function gameOverMessage() {
       (player = gameOver),
       declareWinner(),
       buttonMsg(),
-      (msgBtn.style.background = "rgb(127, 186, 191)"),
+      (msgBtn.style.background = startTieStyle),
       endSound.play()
     );
 }
