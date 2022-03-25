@@ -178,77 +178,85 @@ function delaySound() {
 
 //collect marbles that are on the other side of a single marble
 function collectSingleMarble() {
-  if (gameArray[1] === 1) {
-    let marbles = gameArray[13];
-    gameArray[13] = 0;
-    gameArray[0] += marbles;
-    delaySound();
+  if (player === player1Msg){
+    if (gameArray[1] === 1) {
+      let marbles = gameArray[13];
+      gameArray[13] = 0;
+      gameArray[0] += marbles;
+      delaySound();
+    }
+    if (gameArray[2] === 1) {
+      let marbles = gameArray[12];
+      gameArray[12] = 0;
+      gameArray[0] += marbles;
+      delaySound();
+    }
+    if (gameArray[3] === 1) {
+      let marbles = gameArray[11];
+      gameArray[11] = 0;
+      gameArray[0] += marbles;
+      delaySound();
+    }
+    if (gameArray[4] === 1) {
+      let marbles = gameArray[10];
+      gameArray[10] = 0;
+      gameArray[0] += marbles;
+      delaySound();
+    }
+    if (gameArray[5] === 1) {
+      let marbles = gameArray[9];
+      gameArray[9] = 0;
+      gameArray[0] += marbles;
+      delaySound();
+    }
+    if (gameArray[6] === 1) {
+      let marbles = gameArray[8];
+      gameArray[8] = 0;
+      gameArray[0] += marbles;
+      delaySound();
+    }
   }
-  if (gameArray[13] === 1) {
-    let marbles = gameArray[1];
-    gameArray[1] = 0;
-    gameArray[7] += marbles;
-    delaySound();
-  }
-  if (gameArray[2] === 1) {
-    let marbles = gameArray[12];
-    gameArray[12] = 0;
-    gameArray[0] += marbles;
-    delaySound();
-  }
-  if (gameArray[12] === 1) {
-    let marbles = gameArray[2];
-    gameArray[2] = 0;
-    gameArray[7] += marbles;
-    delaySound();
-  }
-  if (gameArray[3] === 1) {
-    let marbles = gameArray[11];
-    gameArray[11] = 0;
-    gameArray[0] += marbles;
-    delaySound();
-  }
-  if (gameArray[11] === 1) {
-    let marbles = gameArray[3];
-    gameArray[13] = 0;
-    gameArray[7] += marbles;
-    delaySound();
-  }
-  if (gameArray[4] === 1) {
-    let marbles = gameArray[10];
-    gameArray[10] = 0;
-    gameArray[0] += marbles;
-    delaySound();
-  }
-  if (gameArray[10] === 1) {
-    let marbles = gameArray[4];
-    gameArray[4] = 0;
-    gameArray[7] += marbles;
-    delaySound();
-  }
-  if (gameArray[5] === 1) {
-    let marbles = gameArray[9];
-    gameArray[9] = 0;
-    gameArray[0] += marbles;
-    delaySound();
-  }
-  if (gameArray[9] === 1) {
-    let marbles = gameArray[5];
-    gameArray[5] = 0;
-    gameArray[7] += marbles;
-    delaySound();
-  }
-  if (gameArray[6] === 1) {
-    let marbles = gameArray[8];
-    gameArray[8] = 0;
-    gameArray[0] += marbles;
-    delaySound();
-  }
-  if (gameArray[8] === 1) {
-    let marbles = gameArray[6];
-    gameArray[6] = 0;
-    gameArray[7] += marbles;
-    delaySound();
+  if (player === player2Msg){
+    if (gameArray[13] === 1) {
+      let marbles = gameArray[1];
+      gameArray[1] = 0;
+      gameArray[7] += marbles;
+      delaySound();
+    }
+    
+    if (gameArray[12] === 1) {
+      let marbles = gameArray[2];
+      gameArray[2] = 0;
+      gameArray[7] += marbles;
+      delaySound();
+    }
+    
+    if (gameArray[11] === 1) {
+      let marbles = gameArray[3];
+      gameArray[13] = 0;
+      gameArray[7] += marbles;
+      delaySound();
+    }
+    
+    if (gameArray[10] === 1) {
+      let marbles = gameArray[4];
+      gameArray[4] = 0;
+      gameArray[7] += marbles;
+      delaySound();
+    }
+    
+    if (gameArray[9] === 1) {
+      let marbles = gameArray[5];
+      gameArray[5] = 0;
+      gameArray[7] += marbles;
+      delaySound();
+    }
+    if (gameArray[8] === 1) {
+      let marbles = gameArray[6];
+      gameArray[6] = 0;
+      gameArray[7] += marbles;
+      delaySound();
+    }
   }
 }
 
