@@ -10,6 +10,9 @@ const playersTie = "IT'S A TIE!!!";
 const startSound = new Audio("./media/start.wav"); //source: freesound.org
 const playSound = new Audio("./media/play.wav"); //source: freesound.org
 const endSound = new Audio("./media/end.wav"); //source: freesound.org
+const modal = document.getElementById("instrModal");
+const btn = document.getElementById("instrBtn");
+const span = document.getElementsByClassName("close")[0];
 
 
 /*----- app's state (variables) -----*/
@@ -17,12 +20,6 @@ const endSound = new Audio("./media/end.wav"); //source: freesound.org
 let player; //changes state between player 1/2 and game over
 let gameArray = [0, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4]; //initial game set up
 let winnerTotal;
-
-//quick game over array:
-// let gameArray = [0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4];
-
-//shorter game array:
-//let gameArray = [0, 3, 3, 3, 3, 3, 3, 0, 3, 3, 3, 3, 3, 3];
 
 /*----- cached element references -----*/
 
@@ -41,20 +38,22 @@ gamePit.addEventListener("click", gameRound);
 
 restartBtn.addEventListener("click", restart);
 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 /*----- functions -----*/
 
-// //game instructions
-// function PopUp(hideOrshow) {
-//   if (hideOrshow == 'hide') document.getElementById('ac-wrapper').style.display = "none";
-//   else document.getElementById('ac-wrapper').removeAttribute('style');
-// }
-// window.onload = function () {
-//   setTimeout(function () {
-//       PopUp('show');
-//   }, 0);
-// }
-
-//??POTENTIALLY SHORTEN THIS WITH A LOOP document.getElementById("i").innerHTML = gameArray[i];
+//prints array values to the game board
 function setBoard() {
   document.getElementById("0").innerHTML = gameArray[0];
   document.getElementById("1").innerHTML = gameArray[1];
@@ -137,7 +136,8 @@ function gameOverMessage() {
       (player = gameOver),
       declareWinner(),
       buttonMsg(),
-      (msgBtn.style.background = "rgb(127, 186, 191)")
+      (msgBtn.style.background = "rgb(127, 186, 191)"),
+      endSound.play()
     );
 
   if (
@@ -152,9 +152,9 @@ function gameOverMessage() {
       (player = gameOver),
       declareWinner(),
       buttonMsg(),
-      (msgBtn.style.background = "rgb(127, 186, 191)")
+      (msgBtn.style.background = "rgb(127, 186, 191)"),
+      endSound.play()
     );
-    endSound.play();
 }
 
 function gameRound(e) {
