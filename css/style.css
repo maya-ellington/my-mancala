@@ -28,7 +28,6 @@ h2 {
 
 #game-field {
   color: rgb(255, 174, 0);
-  text-align: ;
   display: grid;
   grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px;
   grid-template-rows: 150px 150px;
