@@ -31,7 +31,6 @@ let gamePit = document.querySelector("#game-field");
 
 let restartBtn = document.querySelector("#restart");
 
-
 /*----- event listeners -----*/
 
 msgBtn.addEventListener("click", render);
@@ -77,7 +76,6 @@ function buttonMsg() {
 
 //call at start
 function render() {
-  // if (player === player1Msg || player === player2Msg) return;
   startSound.play();
   setBoard();
   player = player1Msg;
@@ -88,27 +86,39 @@ function render() {
 function restart() {
   gameArray = [0, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4];
   render();
+  document.querySelector("#declare-winner").innerHTML = "";
 }
 
 //toggle between player 1/2 and display in message
 function playerTogglePrintMessage() {
   msgBtn.innerHTML = player;
   if (player === player1Msg) {
-    return (player = player2Msg), buttonMsg(), msgBtn.style.background = "rgb(189, 11, 224)";;
+    return (
+      (player = player2Msg),
+      buttonMsg(),
+      (msgBtn.style.background = "rgb(189, 11, 224)")
+    );
   }
   if (player === player2Msg) {
-    return (player = player1Msg), buttonMsg(), msgBtn.style.background = "rgb(44, 88, 211)";;
+    return (
+      (player = player1Msg),
+      buttonMsg(),
+      (msgBtn.style.background = "rgb(44, 88, 211)")
+    );
   }
 }
 
 //determine winner
 function declareWinner() {
-  if (gameArray[0] > gameArray[13])
-    document.querySelector("#declare-winner").innerHTML = player1Wins;
-  if (gameArray[0] < gameArray[13])
-    document.querySelector("#declare-winner").innerHTML = player2Wins;
-  if (gameArray[0] === gameArray[13])
-    document.querySelector("#declare-winner").innerHTML = playersTie;
+  if (gameArray[0] > gameArray[7])
+    return (document.querySelector("#declare-winner").style.background =
+      "rgb(44, 88, 211)", document.querySelector("#declare-winner").innerHTML = player1Wins);
+  if (gameArray[7] > gameArray[0])
+    return (document.querySelector("#declare-winner").style.background =
+      "rgb(189, 11, 224)", document.querySelector("#declare-winner").innerHTML = player2Wins);
+  if (gameArray[0] === gameArray[7])
+    return (document.querySelector("#declare-winner").style.background =
+      "rgb(127 186 191)", document.querySelector("#declare-winner").innerHTML = playersTie);
 }
 
 //declare game over if either side of the board is empty
@@ -121,7 +131,12 @@ function gameOverMessage() {
     gameArray[5] == 0 &&
     gameArray[6] == 0
   )
-    return (player = gameOver), declareWinner(), buttonMsg();
+    return (
+      (player = gameOver),
+      declareWinner(),
+      buttonMsg(),
+      (msgBtn.style.background = "rgb(127, 186, 191)")
+    );
 
   if (
     gameArray[8] == 0 &&
@@ -131,7 +146,12 @@ function gameOverMessage() {
     gameArray[12] == 0 &&
     gameArray[13] == 0
   )
-    return (player = gameOver), declareWinner(), buttonMsg();
+    return (
+      (player = gameOver),
+      declareWinner(),
+      buttonMsg(),
+      (msgBtn.style.background = "rgb(127, 186, 191)")
+    );
 }
 
 function gameRound(e) {
