@@ -1,4 +1,3 @@
-/* code for centering for now */
 html,
 body {
   height: 100%;
@@ -89,7 +88,7 @@ h2 {
 #message-display {
   height: 100px;
   width: 400px;
-  background-color: rgb(158, 99, 158);
+  background-color: rgb(127 186 191);
   display: flex;
   justify-content: center;
   align-items: center;

@@ -31,6 +31,7 @@ let gamePit = document.querySelector("#game-field");
 
 let restartBtn = document.querySelector("#restart");
 
+
 /*----- event listeners -----*/
 
 msgBtn.addEventListener("click", render);
@@ -81,6 +82,7 @@ function render() {
   setBoard();
   player = player1Msg;
   buttonMsg();
+  msgBtn.style.background = "rgb(44, 88, 211)";
 }
 
 function restart() {
@@ -92,10 +94,10 @@ function restart() {
 function playerTogglePrintMessage() {
   msgBtn.innerHTML = player;
   if (player === player1Msg) {
-    return (player = player2Msg), buttonMsg();
+    return (player = player2Msg), buttonMsg(), msgBtn.style.background = "rgb(189, 11, 224)";;
   }
   if (player === player2Msg) {
-    return (player = player1Msg), buttonMsg();
+    return (player = player1Msg), buttonMsg(), msgBtn.style.background = "rgb(44, 88, 211)";;
   }
 }
 
