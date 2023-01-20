@@ -11,7 +11,7 @@ It is believed that this game dates back to the year 700 AD and originated in Ea
   - CSS
   
  ## :trident: Getting Started: 
-  https://virtual-luna.github.io/Project1-Mancala/
+  https://mayaellington.github.io/Project1-Mancala/
   
   Instructions (can also be found within the game):
   
